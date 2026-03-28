@@ -1182,9 +1182,436 @@
   }
 
   /* Responsive */
+  /* ═══════════════════════════════ */
+  /* SHARED FEATURE SECTION STYLES  */
+  /* ═══════════════════════════════ */
+  .feature-section {
+    position: relative;
+    z-index: 10;
+    max-width: 900px;
+    margin: 0 auto 50px;
+    padding: 0 20px;
+  }
+
+  .feature-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .feature-badge {
+    display: inline-block;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.78rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 50px;
+    margin-bottom: 12px;
+  }
+
+  .feature-badge.game  { background: rgba(0,207,255,0.15); border: 1.5px solid rgba(0,207,255,0.5); color: var(--blue); }
+  .feature-badge.sound { background: rgba(0,255,136,0.12); border: 1.5px solid rgba(0,255,136,0.4); color: var(--green); }
+  .feature-badge.card  { background: rgba(255,230,0,0.12); border: 1.5px solid rgba(255,230,0,0.4); color: var(--yellow); }
+
+  .feature-title {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    letter-spacing: 3px;
+    color: white;
+    margin-bottom: 8px;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.15));
+  }
+
+  .feature-sub {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    color: #777;
+    font-size: 0.95rem;
+  }
+
+  /* ═══════════════════ */
+  /* MINI GAME          */
+  /* ═══════════════════ */
+  .game-wrapper {
+    background: linear-gradient(145deg, #0d1a30, #0a1220);
+    border: 2px solid rgba(0,207,255,0.2);
+    border-radius: 20px;
+    padding: 35px 25px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .game-envelopes {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+
+  .envelope {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(145deg, #1a2a4a, #0f1e38);
+    border: 2px solid rgba(0,207,255,0.3);
+    border-radius: 14px;
+    padding: 20px 18px;
+    cursor: pointer;
+    transition: all 0.2s;
+    min-width: 90px;
+  }
+
+  .envelope:hover {
+    transform: translateY(-8px) scale(1.05);
+    border-color: var(--blue);
+    box-shadow: 0 10px 30px rgba(0,207,255,0.25);
+  }
+
+  .envelope:active { transform: scale(0.95); }
+
+  .env-icon { font-size: 2.5rem; transition: transform 0.2s; }
+  .envelope:hover .env-icon { transform: rotate(-10deg) scale(1.1); }
+  .env-label { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.78rem; color: #888; }
+
+  .envelope.picked { animation: envelopeShake 0.4s ease; }
+  @keyframes envelopeShake {
+    0%,100% { transform: translateX(0); }
+    25% { transform: translateX(-8px) rotate(-5deg); }
+    75% { transform: translateX(8px) rotate(5deg); }
+  }
+
+  .game-result { text-align: center; padding: 10px; }
+  .game-result.hidden { display: none; }
+
+  .result-emoji { font-size: 5rem; animation: resultPop 0.5s cubic-bezier(0.34,1.56,0.64,1); display: block; margin-bottom: 10px; }
+  @keyframes resultPop { 0% { transform: scale(0); } 100% { transform: scale(1); } }
+
+  .result-title {
+    font-family: 'Bangers', cursive;
+    font-size: 3rem;
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+  }
+
+  .result-title.win { color: var(--green); text-shadow: 0 0 20px rgba(0,255,136,0.6); }
+  .result-title.lose { color: var(--red); text-shadow: 0 0 20px rgba(255,45,45,0.6); animation: shake 0.4s ease infinite; }
+
+  .result-msg {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    color: #aaa;
+    font-size: 1rem;
+    margin-bottom: 16px;
+  }
+
+  .game-stats {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 20px;
+  }
+
+  .game-retry {
+    background: linear-gradient(135deg, #003d66, #005c99);
+    border: 2px solid var(--blue);
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.95rem;
+    padding: 12px 28px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .game-retry:hover { transform: scale(1.05); box-shadow: 0 8px 20px rgba(0,207,255,0.3); }
+
+  .game-score-bar {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 18px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: #666;
+    flex-wrap: wrap;
+  }
+
+  .game-score-bar b { color: white; }
+
+  /* ═══════════════════ */
+  /* SOUND BOARD        */
+  /* ═══════════════════ */
+  .sound-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+
+  .sound-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(145deg, #0d1f1a, #0a1810);
+    border: 2px solid rgba(0,255,136,0.2);
+    border-radius: 16px;
+    padding: 22px 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sound-btn:hover {
+    border-color: var(--green);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,255,136,0.2);
+  }
+
+  .sound-btn:active { transform: scale(0.95); }
+  .sound-btn.playing { border-color: var(--green); background: linear-gradient(145deg, #0d2e1a, #0a2010); }
+
+  .sound-icon { font-size: 2.5rem; }
+  .sound-name { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.82rem; color: #aaa; text-align: center; }
+
+  .sound-wave {
+    height: 20px;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    min-height: 20px;
+  }
+
+  .sound-wave.active::before {
+    content: '▁▃▅▇▅▃▁▃▅▃▁';
+    font-size: 0.6rem;
+    color: var(--green);
+    animation: waveAnim 0.5s linear infinite;
+    letter-spacing: 1px;
+  }
+
+  @keyframes waveAnim {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+  }
+
+  .sound-note {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    color: #444;
+    font-size: 0.78rem;
+    text-align: center;
+  }
+
+  /* ═══════════════════ */
+  /* KARTU NASIB        */
+  /* ═══════════════════ */
+  .cardgen-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .cardgen-input-row {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    max-width: 480px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .name-input {
+    flex: 1;
+    min-width: 200px;
+    background: rgba(255,255,255,0.05);
+    border: 2px solid rgba(255,230,0,0.3);
+    border-radius: 12px;
+    padding: 14px 18px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: white;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .name-input:focus { border-color: var(--yellow); }
+  .name-input::placeholder { color: #444; }
+
+  .gen-btn {
+    background: linear-gradient(135deg, var(--yellow), #ffaa00);
+    color: #111;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 24px;
+    font-family: 'Bangers', cursive;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .gen-btn:hover { transform: scale(1.05); box-shadow: 0 8px 20px rgba(255,230,0,0.35); }
+  .gen-btn:active { transform: scale(0.97); }
+
+  /* THE DESTINY CARD */
+  .destiny-card {
+    width: 300px;
+    background: linear-gradient(145deg, #0f0a2a, #1a0f3d);
+    border-radius: 22px;
+    padding: 28px 22px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid rgba(255,230,0,0.4);
+    box-shadow: 0 0 40px rgba(255,230,0,0.15), inset 0 0 30px rgba(0,0,0,0.5);
+    animation: cardReveal 0.6s cubic-bezier(0.34,1.56,0.64,1);
+  }
+
+  .destiny-card.hidden { display: none; }
+
+  @keyframes cardReveal {
+    0% { transform: rotateY(90deg) scale(0.5); opacity: 0; }
+    100% { transform: rotateY(0deg) scale(1); opacity: 1; }
+  }
+
+  .dc-shine {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.05) 50%, transparent 70%);
+    animation: dcShineMove 3s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes dcShineMove {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(200%); }
+  }
+
+  .dc-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+  }
+
+  .dc-logo {
+    font-family: 'Bangers', cursive;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, var(--yellow), var(--red));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .dc-serial { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.7rem; color: #555; }
+
+  .dc-emoji { font-size: 4rem; margin-bottom: 10px; display: block; }
+
+  .dc-name {
+    font-family: 'Bangers', cursive;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    color: white;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+
+  .dc-title {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.78rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 50px;
+    display: inline-block;
+    margin-bottom: 18px;
+    background: rgba(255,45,45,0.2);
+    border: 1px solid rgba(255,45,45,0.4);
+    color: #ff9999;
+  }
+
+  .dc-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 18px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 12px;
+    padding: 12px 8px;
+  }
+
+  .dc-stat { text-align: center; }
+
+  .dc-stat-val {
+    font-family: 'Bangers', cursive;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    color: var(--yellow);
+  }
+
+  .dc-stat-label {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.65rem;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  .dc-quote {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+    margin-bottom: 16px;
+    padding: 10px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
+    border-left: 2px solid rgba(255,230,0,0.3);
+    text-align: left;
+  }
+
+  .dc-footer {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    font-size: 0.65rem;
+    color: #444;
+  }
+
+  .share-card-btn {
+    background: linear-gradient(135deg, #1a3a1a, #0f2a0f);
+    border: 2px solid var(--green);
+    color: var(--green);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.95rem;
+    padding: 12px 28px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .share-card-btn:hover { background: rgba(0,255,136,0.15); transform: scale(1.04); }
+  .share-card-btn.hidden { display: none; }
+
   @media (max-width: 600px) {
-    .meme-grid { grid-template-columns: 1fr; padding: 15px; gap: 20px; }
-    .card-img-wrap { height: 250px; }
+    .sound-grid { grid-template-columns: repeat(3, 1fr); }
+    .game-envelopes { gap: 10px; }
+    .envelope { min-width: 70px; padding: 15px 12px; }
   }
 </style>
 </head>
@@ -1498,143 +1925,129 @@
 
 </div>
 
-<!-- TESTIMONI SECTION -->
-<div class="testi-section">
-  <div class="testi-header">
-    <div class="testi-header-badge">📢 TESTIMONI NYATA</div>
-    <h2 class="testi-big-title">HALL OF RUNGKAD 💀</h2>
-    <p class="testi-subtitle">Para korban yang sudah berjasa menguji keberuntungan di Rocim88</p>
+<!-- ═══════════════════════════════════════ -->
+<!-- FITUR 1: MINI GAME TEBAK RUNGKAD      -->
+<!-- ═══════════════════════════════════════ -->
+<div class="feature-section" id="minigame">
+  <div class="feature-header">
+    <div class="feature-badge game">🎮 MINI GAME</div>
+    <h2 class="feature-title">TEBAK NASIBMU!</h2>
+    <p class="feature-sub">Pilih salah satu amplop. Satu berisi harapan... sisanya rungkad semua 💀</p>
   </div>
 
-  <div class="testi-cards">
-
-    <div class="testi-card">
-      <div class="testi-card-top">
-        <div class="testi-avatar">😭</div>
-        <div class="testi-info">
-          <div class="testi-name">Budi Santoso</div>
-          <div class="testi-loc">📍 Malang, Jawa Timur</div>
-          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
-        </div>
-        <div class="testi-badge-rungkad">RUNGKAD</div>
-      </div>
-      <div class="testi-quote">
-        "Awalnya coba-coba deposit 50rb. Eh enak, deposit 500rb. Sekarang lagi jual motor buat balik modal. Motor satu-satunya. Yang buat kerja. Alhamdulillah."
-      </div>
-      <div class="testi-footer-card">
-        <span class="testi-time">2 jam lalu</span>
-        <span class="testi-loss">💸 Kerugian: Rp 500.000</span>
-      </div>
+  <div class="game-wrapper" id="gameWrapper">
+    <div class="game-envelopes" id="envelopes">
+      <div class="envelope" onclick="pickEnvelope(0)"><span class="env-icon">📩</span><span class="env-label">Amplop 1</span></div>
+      <div class="envelope" onclick="pickEnvelope(1)"><span class="env-icon">📩</span><span class="env-label">Amplop 2</span></div>
+      <div class="envelope" onclick="pickEnvelope(2)"><span class="env-icon">📩</span><span class="env-label">Amplop 3</span></div>
+      <div class="envelope" onclick="pickEnvelope(3)"><span class="env-icon">📩</span><span class="env-label">Amplop 4</span></div>
+      <div class="envelope" onclick="pickEnvelope(4)"><span class="env-icon">📩</span><span class="env-label">Amplop 5</span></div>
     </div>
-
-    <div class="testi-card featured">
-      <div class="testi-card-top">
-        <div class="testi-avatar">🤡</div>
-        <div class="testi-info">
-          <div class="testi-name">Joko Widiantoro</div>
-          <div class="testi-loc">📍 Surabaya, Jawa Timur</div>
-          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
-        </div>
-        <div class="testi-badge-rungkad legend">LEGEND</div>
-      </div>
-      <div class="testi-quote">
-        "Istri nanya duit arisan kemana. Saya bilang dipinjemin temen. Temen nanya kok gak balik-balik. Saya bilang lagi nabung. Bank nanya cicilan kemana. Saya bilang... contentional."
-      </div>
-      <div class="testi-footer-card">
-        <span class="testi-time">5 jam lalu</span>
-        <span class="testi-loss">💸 Kerugian: Rp 2.300.000</span>
-      </div>
+    <div class="game-result hidden" id="gameResult">
+      <div class="result-emoji" id="resultEmoji">💀</div>
+      <div class="result-title" id="resultTitle">RUNGKAD!!!</div>
+      <div class="result-msg" id="resultMsg">Saldo habis dalam 0.3 detik</div>
+      <div class="game-stats" id="gameStats"></div>
+      <button class="game-retry" onclick="resetGame()">🔄 Coba Lagi (Pasti Rungkad Lagi)</button>
     </div>
-
-    <div class="testi-card">
-      <div class="testi-card-top">
-        <div class="testi-avatar">😤</div>
-        <div class="testi-info">
-          <div class="testi-name">Rizky Firmansyah</div>
-          <div class="testi-loc">📍 Medan, Sumatera Utara</div>
-          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
-        </div>
-        <div class="testi-badge-rungkad">RUNGKAD</div>
-      </div>
-      <div class="testi-quote">
-        "Kata aplikasinya 'hampir menang'. Udah 47 kali hampir menang. Kayaknya artinya memang tidak akan pernah menang. Tapi gak papa, besok coba lagi."
-      </div>
-      <div class="testi-footer-card">
-        <span class="testi-time">1 hari lalu</span>
-        <span class="testi-loss">💸 Kerugian: Rp 850.000</span>
-      </div>
-    </div>
-
-    <div class="testi-card">
-      <div class="testi-card-top">
-        <div class="testi-avatar">😱</div>
-        <div class="testi-info">
-          <div class="testi-name">Siti Rahayu</div>
-          <div class="testi-loc">📍 Bandung, Jawa Barat</div>
-          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
-        </div>
-        <div class="testi-badge-rungkad">RUNGKAD</div>
-      </div>
-      <div class="testi-quote">
-        "Katanya 'game skill based'. Skill saya udah level dewa. Saldo saya level -1. Mungkin skillnya emang buat ngitung berapa cepat uang habis."
-      </div>
-      <div class="testi-footer-card">
-        <span class="testi-time">3 jam lalu</span>
-        <span class="testi-loss">💸 Kerugian: Rp 1.200.000</span>
-      </div>
-    </div>
-
-    <div class="testi-card">
-      <div class="testi-card-top">
-        <div class="testi-avatar">💀</div>
-        <div class="testi-info">
-          <div class="testi-name">Hendra Gunawan</div>
-          <div class="testi-loc">📍 Jakarta Selatan</div>
-          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
-        </div>
-        <div class="testi-badge-rungkad">RUNGKAD</div>
-      </div>
-      <div class="testi-quote">
-        "Rungkad jam 11 malem. Gas lagi jam 12. Rungkad lagi jam 12.05. Tidur jam 4 pagi. Bangun jam 6, langsung cek saldo. Masih 0. Alhamdulillah konsisten."
-      </div>
-      <div class="testi-footer-card">
-        <span class="testi-time">Kemarin</span>
-        <span class="testi-loss">💸 Kerugian: Rp 3.750.000</span>
-      </div>
-    </div>
-
-    <div class="testi-card featured">
-      <div class="testi-card-top">
-        <div class="testi-avatar">🏆</div>
-        <div class="testi-info">
-          <div class="testi-name">Andi Pratama</div>
-          <div class="testi-loc">📍 Makassar, Sulawesi</div>
-          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
-        </div>
-        <div class="testi-badge-rungkad mvp">MVP RUNGKAD</div>
-      </div>
-      <div class="testi-quote">
-        "Teman saya bilang Rocim88 scam. Saya buktikan dia salah dengan deposit 5 juta. Sekarang saya yang minta maaf ke teman. Dan ke istri. Dan ke mertua. Dan ke diri sendiri."
-      </div>
-      <div class="testi-footer-card">
-        <span class="testi-time">3 hari lalu</span>
-        <span class="testi-loss">💸 Kerugian: Rp 5.000.000</span>
-      </div>
-    </div>
-
   </div>
 
-  <div class="rating-summary">
-    <div class="rating-big">5.0 ⭐</div>
-    <div class="rating-text">
-      <div style="font-weight:800;color:white;font-size:1rem;">Rating Kepuasan Rungkad</div>
-      <div style="color:#888;font-size:0.85rem;font-family:'Nunito',sans-serif;">Berdasarkan 12.847 testimoni korban</div>
+  <div class="game-score-bar">
+    <span>🏆 Menang: <b id="winCount">0</b></span>
+    <span>💀 Rungkad: <b id="loseCount">0</b></span>
+    <span>📊 Win Rate: <b id="winRate">0%</b></span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- FITUR 2: SOUND BOARD                   -->
+<!-- ═══════════════════════════════════════ -->
+<div class="feature-section" id="soundboard">
+  <div class="feature-header">
+    <div class="feature-badge sound">🔊 SOUND BOARD</div>
+    <h2 class="feature-title">SUARA KORBAN ROCIM88</h2>
+    <p class="feature-sub">Klik tombol untuk merasakan suasana rungkad yang sesungguhnya 🎵</p>
+  </div>
+
+  <div class="sound-grid">
+    <button class="sound-btn" onclick="playSound('cry')">
+      <span class="sound-icon">😭</span>
+      <span class="sound-name">Nangis Rungkad</span>
+      <span class="sound-wave" id="wave-cry"></span>
+    </button>
+    <button class="sound-btn" onclick="playSound('cash')">
+      <span class="sound-icon">💸</span>
+      <span class="sound-name">Uang Kabur</span>
+      <span class="sound-wave" id="wave-cash"></span>
+    </button>
+    <button class="sound-btn" onclick="playSound('win')">
+      <span class="sound-icon">🎉</span>
+      <span class="sound-name">Menang (Langka)</span>
+      <span class="sound-wave" id="wave-win"></span>
+    </button>
+    <button class="sound-btn" onclick="playSound('alarm')">
+      <span class="sound-icon">🚨</span>
+      <span class="sound-name">Alarm Rungkad</span>
+      <span class="sound-wave" id="wave-alarm"></span>
+    </button>
+    <button class="sound-btn" onclick="playSound('drum')">
+      <span class="sound-icon">🥁</span>
+      <span class="sound-name">Drum Tragedi</span>
+      <span class="sound-wave" id="wave-drum"></span>
+    </button>
+    <button class="sound-btn" onclick="playSound('bruh')">
+      <span class="sound-icon">🤦</span>
+      <span class="sound-name">Bruh Moment</span>
+      <span class="sound-wave" id="wave-bruh"></span>
+    </button>
+  </div>
+  <div class="sound-note">* Semua suara dibuat dengan teknologi Web Audio API 🎵 No download needed!</div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- FITUR 3: GENERATOR KARTU NASIB        -->
+<!-- ═══════════════════════════════════════ -->
+<div class="feature-section" id="cardgen">
+  <div class="feature-header">
+    <div class="feature-badge card">🎴 KARTU NASIB</div>
+    <h2 class="feature-title">RAMAL NASIBMU DI ROCIM88</h2>
+    <p class="feature-sub">Masukkan namamu dan lihat takdirmu yang sudah ditentukan semesta 🔮</p>
+  </div>
+
+  <div class="cardgen-wrapper">
+    <div class="cardgen-input-row">
+      <input type="text" id="nameInput" class="name-input" placeholder="Masukkan nama kamu..." maxlength="20">
+      <button class="gen-btn" onclick="generateCard()">🔮 RAMAL!</button>
     </div>
-    <div class="rating-bars">
-      <div class="rbar"><span>Rungkad Cepat</span><div class="rb-fill" style="width:99%"></div><span>99%</span></div>
-      <div class="rbar"><span>Cuan</span><div class="rb-fill green" style="width:1%"></div><span>1%</span></div>
-      <div class="rbar"><span>Nyesel</span><div class="rb-fill red" style="width:100%"></div><span>100%</span></div>
+
+    <div class="destiny-card hidden" id="destinyCard">
+      <div class="dc-shine"></div>
+      <div class="dc-top">
+        <div class="dc-logo">ROCIM88</div>
+        <div class="dc-serial" id="dcSerial">#RMD-0000</div>
+      </div>
+      <div class="dc-emoji" id="dcEmoji">💀</div>
+      <div class="dc-name" id="dcName">NAMA KORBAN</div>
+      <div class="dc-title" id="dcTitle">MASTER RUNGKAD</div>
+      <div class="dc-stats">
+        <div class="dc-stat">
+          <div class="dc-stat-val" id="dcLuck">0%</div>
+          <div class="dc-stat-label">Keberuntungan</div>
+        </div>
+        <div class="dc-stat">
+          <div class="dc-stat-val" id="dcSpeed">0 detik</div>
+          <div class="dc-stat-label">Waktu Rungkad</div>
+        </div>
+        <div class="dc-stat">
+          <div class="dc-stat-val" id="dcLevel">???</div>
+          <div class="dc-stat-label">Level Korban</div>
+        </div>
+      </div>
+      <div class="dc-quote" id="dcQuote">"Nasibmu sudah ditentukan"</div>
+      <div class="dc-footer">⚠️ Kartu ini tidak bisa di-refund seperti deposit kamu</div>
     </div>
+
+    <button class="share-card-btn hidden" id="shareBtn" onclick="shareCard()">📤 Kirim ke Teman (Biar Ikut Rungkad)</button>
   </div>
 </div>
 
@@ -1736,6 +2149,177 @@
       slotsEl.style.color = slots === 1 ? 'var(--red)' : 'inherit';
     }
   }, 12000);
+
+  // ═══════════════════════════
+  // MINI GAME
+  // ═══════════════════════════
+  let winSlot = Math.floor(Math.random() * 5);
+  let gameWins = 0, gameLosses = 0, gameActive = true;
+
+  const loseMessages = [
+    ['💀','RUNGKAD TOTAL!','Saldo hilang lebih cepat dari wifi kamu nyambung.'],
+    ['😭','HANCUR LEBUR!','Motor, HP, dan mimpi ikut rungkad sekarang.'],
+    ['🤡','MAAF YA BRO!','Semesta udah sepakat: kamu emang harus rungkad.'],
+    ['📉','GRAFIK TURUN!','Dari puncak harapan langsung ke lembah penyesalan.'],
+    ['🗑️','NYESEL KAN?','Tapi jangan sedih... coba lagi aja (rungkad lagi).'],
+  ];
+
+  function pickEnvelope(idx) {
+    if (!gameActive) return;
+    gameActive = false;
+    const envs = document.querySelectorAll('.envelope');
+    envs[idx].querySelector('.env-icon').textContent = idx === winSlot ? '🎁' : '💀';
+    envs[idx].classList.add('picked');
+
+    setTimeout(() => {
+      document.getElementById('envelopes').style.display = 'none';
+      const result = document.getElementById('gameResult');
+      result.classList.remove('hidden');
+      const isWin = idx === winSlot;
+
+      if (isWin) {
+        gameWins++;
+        document.getElementById('resultEmoji').textContent = '🎉';
+        const rt = document.getElementById('resultTitle');
+        rt.textContent = 'KAMU MENANG!!!';
+        rt.className = 'result-title win';
+        document.getElementById('resultMsg').textContent = 'Ini pertama dan terakhir kali kamu menang di Rocim88.';
+        document.getElementById('gameStats').textContent = '🎊 Selamat! Kamu 1 dari jutaan yang beruntung!';
+      } else {
+        gameLosses++;
+        const msg = loseMessages[Math.floor(Math.random() * loseMessages.length)];
+        document.getElementById('resultEmoji').textContent = msg[0];
+        const rt = document.getElementById('resultTitle');
+        rt.textContent = msg[1];
+        rt.className = 'result-title lose';
+        document.getElementById('resultMsg').textContent = msg[2];
+        document.getElementById('gameStats').textContent = `💸 Waktu rungkad: ${(Math.random()*9+0.1).toFixed(1)} detik`;
+      }
+      updateGameScore();
+    }, 600);
+  }
+
+  function resetGame() {
+    winSlot = Math.floor(Math.random() * 5);
+    document.querySelectorAll('.envelope').forEach(e => {
+      e.querySelector('.env-icon').textContent = '📩';
+      e.classList.remove('picked');
+    });
+    document.getElementById('envelopes').style.display = 'flex';
+    document.getElementById('gameResult').classList.add('hidden');
+    gameActive = true;
+  }
+
+  function updateGameScore() {
+    document.getElementById('winCount').textContent = gameWins;
+    document.getElementById('loseCount').textContent = gameLosses;
+    const total = gameWins + gameLosses;
+    document.getElementById('winRate').textContent = total > 0 ? ((gameWins/total)*100).toFixed(0)+'%' : '0%';
+  }
+
+  // ═══════════════════════════
+  // SOUND BOARD (Web Audio API)
+  // ═══════════════════════════
+  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+  function playSound(type) {
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    const waveEl = document.getElementById('wave-' + type);
+    waveEl.classList.add('active');
+    setTimeout(() => waveEl.classList.remove('active'), 1500);
+
+    const masterGain = audioCtx.createGain();
+    masterGain.gain.setValueAtTime(0.4, audioCtx.currentTime);
+    masterGain.connect(audioCtx.destination);
+    const now = audioCtx.currentTime;
+
+    const makeOsc = (type, freq, startT, dur, gainVal, freqEnd) => {
+      const o = audioCtx.createOscillator();
+      const g = audioCtx.createGain();
+      o.type = type; o.frequency.setValueAtTime(freq, now+startT);
+      if (freqEnd) o.frequency.exponentialRampToValueAtTime(freqEnd, now+startT+dur);
+      g.gain.setValueAtTime(gainVal, now+startT);
+      g.gain.exponentialRampToValueAtTime(0.001, now+startT+dur+0.05);
+      o.connect(g); g.connect(masterGain);
+      o.start(now+startT); o.stop(now+startT+dur+0.1);
+    };
+
+    if (type === 'cry') {
+      [0,0.3,0.6,0.9].forEach((t,i) => makeOsc('sine', 600-i*80, t, 0.3, 0.3, 200));
+    } else if (type === 'cash') {
+      for(let i=0;i<8;i++) makeOsc('triangle', 800+Math.random()*400, i*0.07, 0.12, 0.2, null);
+      makeOsc('sine', 120, 0.8, 0.6, 0.3, null);
+    } else if (type === 'win') {
+      [523,659,784,1047].forEach((f,i) => makeOsc('square', f, i*0.12, 0.22, 0.15, null));
+    } else if (type === 'alarm') {
+      for(let i=0;i<6;i++) makeOsc('sawtooth', i%2===0?880:660, i*0.18, 0.14, 0.25, null);
+    } else if (type === 'drum') {
+      makeOsc('sine', 150, 0, 0.15, 0.6, 40);
+      [0.25,0.5,0.75].forEach(t => {
+        const buf = audioCtx.createBuffer(1, audioCtx.sampleRate*0.1, audioCtx.sampleRate);
+        const d = buf.getChannelData(0); for(let i=0;i<d.length;i++) d[i]=Math.random()*2-1;
+        const src = audioCtx.createBufferSource();
+        const sg = audioCtx.createGain();
+        src.buffer = buf; sg.gain.setValueAtTime(0.2, now+t);
+        sg.gain.exponentialRampToValueAtTime(0.001, now+t+0.12);
+        src.connect(sg); sg.connect(masterGain); src.start(now+t);
+      });
+    } else if (type === 'bruh') {
+      makeOsc('sawtooth', 300, 0, 0.8, 0.35, 80);
+    }
+  }
+
+  // ═══════════════════════════
+  // GENERATOR KARTU NASIB
+  // ═══════════════════════════
+  const cardTitles = ['MASTER RUNGKAD','SULTAN BOKEK','LEGENDA RUNGKAD','KORBAN SEJATI','AHLI DEPOSIT','KAISAR NYESEL','PANGERAN RUNGKAD','DEWA RUNGKAD','SENIOR BOKEK','PROFESIONAL KALAH'];
+  const cardQuotes = ['"Nasibmu sudah ditentukan sebelum kamu lahir."','"Deposit sekali lagi, mungkin kali ini beda."','"Rungkad bukan akhir, tapi awal dari rungkad berikutnya."','"Semesta punya rencana indah untukmu: rungkad terus."','"Skill? Strategi? Di sini yang menang cuma Rocim88."','"Tenang, uangmu masih ada — di kantong Rocim88."','"Contentional saja, bro. Contentional saja."','"Kata orang bijak: yang penting prosesnya, bukan hasilnya."'];
+  const cardEmojis = ['💀','😭','🤡','📉','💸','😤','😱','🗑️','🥀','☠️'];
+  const speeds = ['0.3 detik','2 menit','5 menit','10 menit','< 1 jam','1 malam penuh'];
+  const levels = ['Bronze Rungkad','Silver Rungkad','Gold Rungkad','Platinum Rungkad','Diamond Rungkad','LEGEND 💀'];
+
+  function generateCard() {
+    const name = document.getElementById('nameInput').value.trim();
+    if (!name) { document.getElementById('nameInput').focus(); return; }
+
+    let seed = 0;
+    for(let i=0;i<name.length;i++) seed += name.charCodeAt(i) * (i+1);
+    const rnd = (max) => { seed = (seed * 1664525 + 1013904223) & 0xffffffff; return Math.abs(seed) % max; };
+
+    document.getElementById('dcEmoji').textContent = cardEmojis[rnd(cardEmojis.length)];
+    document.getElementById('dcName').textContent = name.toUpperCase();
+    document.getElementById('dcTitle').textContent = cardTitles[rnd(cardTitles.length)];
+    document.getElementById('dcLuck').textContent = rnd(15) + '%';
+    document.getElementById('dcSpeed').textContent = speeds[rnd(speeds.length)];
+    document.getElementById('dcLevel').textContent = levels[rnd(levels.length)];
+    document.getElementById('dcQuote').textContent = cardQuotes[rnd(cardQuotes.length)];
+    document.getElementById('dcSerial').textContent = '#RMD-' + String(Math.abs(seed)%9999).padStart(4,'0');
+
+    const card = document.getElementById('destinyCard');
+    card.classList.remove('hidden');
+    card.style.animation = 'none'; void card.offsetWidth;
+    card.style.animation = 'cardReveal 0.6s cubic-bezier(0.34,1.56,0.64,1)';
+    document.getElementById('shareBtn').classList.remove('hidden');
+    setTimeout(() => card.scrollIntoView({behavior:'smooth',block:'center'}), 100);
+  }
+
+  function shareCard() {
+    const name = document.getElementById('dcName').textContent;
+    const title = document.getElementById('dcTitle').textContent;
+    const luck = document.getElementById('dcLuck').textContent;
+    const text = `🎴 KARTU NASIB ROCIM88\n👤 ${name}\n🏆 ${title}\n🍀 Keberuntungan: ${luck}\n\n"Sudah dicoba di Rocim88, hasilnya: RUNGKAD 💀"\n\nCek nasibmu juga! 🎰`;
+    if (navigator.share) {
+      navigator.share({title:'Kartu Nasib Rocim88', text});
+    } else {
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('shareBtn');
+        btn.textContent = '✅ Disalin! Kirim ke teman!';
+        setTimeout(() => btn.textContent = '📤 Kirim ke Teman (Biar Ikut Rungkad)', 2500);
+      });
+    }
+  }
+
+  document.getElementById('nameInput').addEventListener('keydown', e => { if(e.key==='Enter') generateCard(); });
 </script>
 </body>
 </html>
