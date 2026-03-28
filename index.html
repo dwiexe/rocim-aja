@@ -1,0 +1,1741 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ROCIM88 - AUTO RUNGKAD 🤓</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@600;700;800&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #ff2d2d;
+    --yellow: #ffe600;
+    --dark: #1a1a2e;
+    --green: #00ff88;
+    --blue: #00cfff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--dark);
+    font-family: 'Nunito', sans-serif;
+    overflow-x: hidden;
+    cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text y='28' font-size='28'>🤓</text></svg>"), auto;
+  }
+
+  /* Animated BG */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: 
+      radial-gradient(circle at 20% 50%, rgba(255,46,46,0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(0,207,255,0.15) 0%, transparent 50%),
+      radial-gradient(circle at 60% 80%, rgba(255,230,0,0.1) 0%, transparent 50%);
+    animation: bgPulse 4s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @keyframes bgPulse {
+    0% { opacity: 0.5; }
+    100% { opacity: 1; }
+  }
+
+  /* HEADER */
+  .header {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 30px 20px 10px;
+  }
+
+  .site-title {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(3rem, 10vw, 7rem);
+    letter-spacing: 6px;
+    background: linear-gradient(135deg, var(--yellow), var(--red), var(--blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+    filter: drop-shadow(0 0 20px rgba(255,230,0,0.5));
+    animation: titleBounce 0.6s ease-in-out infinite alternate;
+  }
+
+  @keyframes titleBounce {
+    0% { transform: scale(1) rotate(-1deg); }
+    100% { transform: scale(1.04) rotate(1deg); }
+  }
+
+  .subtitle {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1rem, 4vw, 1.8rem);
+    color: var(--green);
+    margin-top: -10px;
+    text-shadow: 0 0 10px var(--green);
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* TICKER */
+  .ticker-wrap {
+    background: var(--red);
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 10px 0;
+    margin: 20px 0;
+    border-top: 3px solid var(--yellow);
+    border-bottom: 3px solid var(--yellow);
+    position: relative;
+    z-index: 10;
+  }
+
+  .ticker {
+    display: inline-block;
+    animation: ticker 12s linear infinite;
+    font-family: 'Bangers', cursive;
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    color: var(--yellow);
+  }
+
+  @keyframes ticker {
+    0% { transform: translateX(100vw); }
+    100% { transform: translateX(-100%); }
+  }
+
+  /* MEME GRID */
+  .meme-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 30px;
+    padding: 30px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+  }
+
+  .meme-card {
+    background: linear-gradient(145deg, #16213e, #0f3460);
+    border: 3px solid;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+    animation: cardFloat 3s ease-in-out infinite alternate;
+  }
+
+  .meme-card:nth-child(1) { border-color: var(--yellow); animation-delay: 0s; }
+  .meme-card:nth-child(2) { border-color: var(--blue); animation-delay: 0.5s; }
+  .meme-card:nth-child(3) { border-color: var(--green); animation-delay: 1s; }
+
+  @keyframes cardFloat {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-8px); }
+  }
+
+  .meme-card:hover {
+    transform: translateY(-15px) scale(1.03) !important;
+    box-shadow: 0 20px 50px rgba(255,230,0,0.4);
+    animation: none;
+  }
+
+  .card-img-wrap {
+    position: relative;
+    overflow: hidden;
+    height: 300px;
+  }
+
+  .card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    filter: contrast(1.1) saturate(1.2);
+    transition: transform 0.3s;
+  }
+
+  .meme-card:hover .card-img-wrap img {
+    transform: scale(1.08);
+  }
+
+  /* Meme text overlay */
+  .meme-top {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Bangers', cursive;
+    font-size: 1.5rem;
+    color: white;
+    text-shadow: 3px 3px 0 black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;
+    text-align: center;
+    width: 90%;
+    letter-spacing: 2px;
+    line-height: 1.2;
+    z-index: 5;
+  }
+
+  .meme-bottom {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Bangers', cursive;
+    font-size: 1.6rem;
+    color: var(--yellow);
+    text-shadow: 3px 3px 0 black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;
+    text-align: center;
+    width: 90%;
+    letter-spacing: 2px;
+    line-height: 1.2;
+    z-index: 5;
+  }
+
+  /* IMPACT text emoji overlay */
+  .impact-emoji {
+    position: absolute;
+    font-size: 3rem;
+    animation: spin 2s linear infinite;
+    z-index: 6;
+    filter: drop-shadow(0 0 8px gold);
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.3); }
+    100% { transform: rotate(360deg) scale(1); }
+  }
+
+  /* Card caption */
+  .card-caption {
+    padding: 15px;
+    text-align: center;
+  }
+
+  .card-caption h3 {
+    font-family: 'Bangers', cursive;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+  }
+
+  .card-caption p {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #aaa;
+    line-height: 1.6;
+  }
+
+  .meme-card:nth-child(1) .card-caption h3 { color: var(--yellow); }
+  .meme-card:nth-child(2) .card-caption h3 { color: var(--blue); }
+  .meme-card:nth-child(3) .card-caption h3 { color: var(--green); }
+
+  /* RUNGKAD SECTION */
+  .rungkad-section {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 40px 20px;
+    margin: 20px auto;
+    max-width: 800px;
+  }
+
+  .rungkad-box {
+    background: linear-gradient(135deg, #ff2d2d22, #ffe60022);
+    border: 4px dashed var(--red);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .rungkad-box::before {
+    content: '💀💀💀';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    background: var(--dark);
+    padding: 0 10px;
+  }
+
+  .rungkad-title {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(2rem, 8vw, 4rem);
+    color: var(--red);
+    letter-spacing: 4px;
+    text-shadow: 0 0 20px rgba(255,45,45,0.8);
+    animation: shake 0.5s ease-in-out infinite;
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px) rotate(-2deg); }
+    75% { transform: translateX(5px) rotate(2deg); }
+  }
+
+  .rungkad-meter {
+    margin: 20px auto;
+    max-width: 400px;
+  }
+
+  .meter-label {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  .meter-bar {
+    height: 35px;
+    background: #222;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid var(--red);
+    position: relative;
+  }
+
+  .meter-fill {
+    height: 100%;
+    border-radius: 20px;
+    animation: fillUp 2s ease forwards;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    font-family: 'Bangers', cursive;
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+
+  .meter-fill.danger {
+    background: linear-gradient(90deg, #ff6b00, #ff2d2d);
+    width: 0%;
+    animation: fillDanger 2.5s 0.5s ease forwards;
+    color: white;
+  }
+
+  .meter-fill.luck {
+    background: linear-gradient(90deg, #00ff88, #00cfff);
+    width: 0%;
+    animation: fillLuck 2.5s 0.8s ease forwards;
+    color: #111;
+  }
+
+  @keyframes fillDanger {
+    0% { width: 0%; }
+    100% { width: 99%; }
+  }
+
+  @keyframes fillLuck {
+    0% { width: 0%; }
+    100% { width: 3%; }
+  }
+
+  /* BUTTON */
+  .play-btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 15px 40px;
+    background: linear-gradient(135deg, var(--yellow), var(--red));
+    color: #111;
+    font-family: 'Bangers', cursive;
+    font-size: 1.8rem;
+    letter-spacing: 3px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    transition: transform 0.1s;
+    box-shadow: 0 8px 25px rgba(255,46,46,0.5);
+  }
+
+  .play-btn:hover { transform: scale(1.1); }
+  .play-btn:active { transform: scale(0.95); }
+
+  .play-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transform: translateX(-100%);
+    animation: shine 2s infinite;
+  }
+
+  @keyframes shine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(200%); }
+  }
+
+  /* POPUP */
+  .popup-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .popup-overlay.show { display: flex; }
+
+  .popup-box {
+    background: linear-gradient(145deg, #1a1a2e, #16213e);
+    border: 4px solid var(--red);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    position: relative;
+    animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) forwards;
+  }
+
+  @keyframes popIn {
+    0% { transform: scale(0) rotate(-10deg); opacity: 0; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+  }
+
+  .popup-emoji { font-size: 5rem; animation: bounce 0.5s ease infinite alternate; display: block; }
+  @keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-15px); } }
+
+  .popup-title {
+    font-family: 'Bangers', cursive;
+    font-size: 2.5rem;
+    color: var(--red);
+    letter-spacing: 3px;
+    margin: 10px 0;
+    text-shadow: 0 0 15px red;
+  }
+
+  .popup-text {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    color: #ccc;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .popup-close {
+    background: var(--green);
+    color: #111;
+    border: none;
+    padding: 12px 30px;
+    font-family: 'Bangers', cursive;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.1s;
+  }
+
+  .popup-close:hover { transform: scale(1.1); }
+
+  /* FOOTER */
+  footer {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 30px;
+    border-top: 2px solid #333;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    color: #555;
+    font-size: 0.9rem;
+  }
+
+  footer span {
+    color: var(--red);
+    font-size: 1.1rem;
+  }
+
+  /* Floating emojis */
+  .floaters { position: fixed; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
+  .floater {
+    position: absolute;
+    font-size: 2rem;
+    animation: floatUp linear infinite;
+    opacity: 0.15;
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0.15; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+  }
+
+  /* PERSUASIVE SECTION */
+  .persuade-section {
+    position: relative;
+    z-index: 10;
+    max-width: 680px;
+    margin: 0 auto 10px;
+    padding: 0 20px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+
+  /* Social proof */
+  .social-proof {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    color: #ccc;
+  }
+
+  .proof-avatars { display: flex; font-size: 1.2rem; letter-spacing: -4px; }
+  .proof-text strong { color: white; font-size: 1rem; }
+  .proof-live {
+    color: #ff4444;
+    font-weight: 900;
+    font-size: 0.75rem;
+    animation: blink 1s step-end infinite;
+    margin-left: 6px;
+  }
+
+  /* Urgency bar */
+  .urgency-bar {
+    width: 100%;
+    background: linear-gradient(135deg, #1a0000, #3d0000);
+    border: 2px solid var(--red);
+    border-radius: 12px;
+    padding: 12px 20px;
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    color: #ff9999;
+    letter-spacing: 1px;
+    animation: urgencyPulse 1s ease-in-out infinite alternate;
+  }
+
+  @keyframes urgencyPulse {
+    0% { box-shadow: 0 0 10px rgba(255,45,45,0.3); }
+    100% { box-shadow: 0 0 25px rgba(255,45,45,0.7); }
+  }
+
+  /* Testimonial scroll */
+  .testi-scroll {
+    width: 100%;
+    overflow: hidden;
+    background: rgba(255,255,255,0.03);
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 12px 0;
+  }
+
+  .testi-track {
+    display: flex;
+    gap: 40px;
+    white-space: nowrap;
+    animation: testiScroll 20s linear infinite;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.88rem;
+    color: #aaa;
+  }
+
+  .testi-item { flex-shrink: 0; padding: 0 10px; }
+  .testi-item b { color: var(--yellow); }
+
+  @keyframes testiScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* Button wrapper */
+  .btn-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .btn-hype {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 1.05rem;
+    color: var(--yellow);
+    text-align: center;
+    animation: btnHypePulse 0.8s ease-in-out infinite alternate;
+    text-shadow: 0 0 10px rgba(255,230,0,0.5);
+  }
+
+  @keyframes btnHypePulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.03); }
+  }
+
+  /* MEGA BUTTON */
+  .play-btn-mega {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    overflow: visible;
+  }
+
+  .btn-glow {
+    position: absolute;
+    inset: -6px;
+    background: linear-gradient(135deg, var(--yellow), var(--red), var(--yellow));
+    border-radius: 24px;
+    filter: blur(12px);
+    opacity: 0.7;
+    animation: glowRotate 2s linear infinite;
+    background-size: 200% 200%;
+  }
+
+  @keyframes glowRotate {
+    0% { background-position: 0% 50%; opacity: 0.5; }
+    50% { background-position: 100% 50%; opacity: 1; }
+    100% { background-position: 0% 50%; opacity: 0.5; }
+  }
+
+  .btn-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: linear-gradient(135deg, #cc0000, #ff4400, #ffaa00);
+    border-radius: 18px;
+    padding: 20px 28px;
+    border: 3px solid rgba(255,255,255,0.2);
+    transition: transform 0.15s, filter 0.15s;
+  }
+
+  .play-btn-mega:hover .btn-content {
+    transform: scale(1.04) translateY(-3px);
+    filter: brightness(1.15);
+  }
+
+  .play-btn-mega:active .btn-content {
+    transform: scale(0.97);
+  }
+
+  .btn-icon { font-size: 2.5rem; flex-shrink: 0; animation: btnIconSpin 3s ease-in-out infinite; }
+  @keyframes btnIconSpin {
+    0%, 90%, 100% { transform: rotate(0deg); }
+    95% { transform: rotate(-20deg); }
+  }
+
+  .btn-texts {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    flex: 1;
+  }
+
+  .btn-main {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(1.4rem, 5vw, 2rem);
+    letter-spacing: 3px;
+    color: white;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.4);
+    line-height: 1.1;
+  }
+
+  .btn-sub {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.85);
+    margin-top: 3px;
+  }
+
+  .btn-arrow-right {
+    font-size: 2rem;
+    flex-shrink: 0;
+    animation: arrowBounce 0.6s ease-in-out infinite alternate;
+  }
+
+  @keyframes arrowBounce {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(6px); }
+  }
+
+  /* Warning text */
+  .btn-warning {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: #888;
+    text-align: center;
+    max-width: 480px;
+    line-height: 1.5;
+  }
+
+  .btn-warning strong { color: #ffaa55; }
+
+  /* FOMO badges */
+  .fomo-badges {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .fomo-badge {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.85rem;
+    padding: 8px 16px;
+    border-radius: 50px;
+    animation: badgePop 1.5s ease-in-out infinite alternate;
+  }
+
+  .fomo-badge.red {
+    background: rgba(255,45,45,0.15);
+    border: 1.5px solid var(--red);
+    color: #ff9999;
+  }
+
+  .fomo-badge.green {
+    background: rgba(0,255,136,0.1);
+    border: 1.5px solid var(--green);
+    color: var(--green);
+  }
+
+  @keyframes badgePop {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+  }
+  @keyframes badgePop {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+  }
+
+  /* TESTIMONI SECTION */
+  .testi-section {
+    position: relative;
+    z-index: 10;
+    max-width: 1100px;
+    margin: 10px auto 20px;
+    padding: 20px 20px 40px;
+  }
+
+  .testi-header {
+    text-align: center;
+    margin-bottom: 35px;
+  }
+
+  .testi-header-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(255,46,46,0.2), rgba(255,230,0,0.1));
+    border: 1.5px solid rgba(255,46,46,0.5);
+    color: #ff9999;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.82rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 50px;
+    margin-bottom: 14px;
+  }
+
+  .testi-big-title {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(2.2rem, 7vw, 4rem);
+    letter-spacing: 4px;
+    background: linear-gradient(135deg, var(--yellow), var(--red));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 15px rgba(255,46,46,0.4));
+    margin-bottom: 10px;
+  }
+
+  .testi-subtitle {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    color: #777;
+    font-size: 0.95rem;
+  }
+
+  .testi-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 35px;
+  }
+
+  .testi-card {
+    background: linear-gradient(145deg, #12192e, #0d1525);
+    border: 1.5px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+    padding: 22px;
+    position: relative;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    overflow: hidden;
+  }
+
+  .testi-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255,46,46,0.5), transparent);
+  }
+
+  .testi-card.featured {
+    border-color: rgba(255,230,0,0.3);
+    background: linear-gradient(145deg, #1a1500, #0d1525);
+  }
+
+  .testi-card.featured::before {
+    background: linear-gradient(90deg, transparent, rgba(255,230,0,0.6), transparent);
+  }
+
+  .testi-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255,46,46,0.4);
+    box-shadow: 0 12px 35px rgba(255,46,46,0.15);
+  }
+
+  .testi-card-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+  }
+
+  .testi-avatar {
+    font-size: 2.5rem;
+    width: 52px;
+    height: 52px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255,255,255,0.1);
+    flex-shrink: 0;
+  }
+
+  .testi-info { flex: 1; }
+
+  .testi-name {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    color: white;
+    font-size: 0.95rem;
+    line-height: 1.2;
+  }
+
+  .testi-loc {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    color: #666;
+    font-size: 0.78rem;
+    margin-top: 2px;
+  }
+
+  .testi-stars { font-size: 0.75rem; margin-top: 3px; letter-spacing: 1px; }
+
+  .testi-badge-rungkad {
+    font-family: 'Bangers', cursive;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: rgba(255,45,45,0.2);
+    border: 1px solid rgba(255,45,45,0.5);
+    color: #ff7777;
+    flex-shrink: 0;
+  }
+
+  .testi-badge-rungkad.legend {
+    background: rgba(0,207,255,0.15);
+    border-color: rgba(0,207,255,0.4);
+    color: var(--blue);
+  }
+
+  .testi-badge-rungkad.mvp {
+    background: rgba(255,230,0,0.15);
+    border-color: rgba(255,230,0,0.4);
+    color: var(--yellow);
+  }
+
+  .testi-quote {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    color: #bbb;
+    font-size: 0.92rem;
+    line-height: 1.65;
+    font-style: italic;
+    padding: 14px 14px 14px 20px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 10px;
+    border-left: 3px solid rgba(255,46,46,0.4);
+    margin-bottom: 14px;
+    position: relative;
+  }
+
+  .testi-card.featured .testi-quote { border-left-color: rgba(255,230,0,0.5); }
+
+  .testi-quote::before {
+    content: '"';
+    position: absolute;
+    top: -5px; left: 8px;
+    font-size: 3rem;
+    color: rgba(255,46,46,0.25);
+    font-family: Georgia, serif;
+    line-height: 1;
+  }
+
+  .testi-footer-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .testi-time {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    color: #555;
+    font-size: 0.78rem;
+  }
+
+  .testi-loss {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    color: var(--red);
+    font-size: 0.82rem;
+    background: rgba(255,45,45,0.1);
+    padding: 3px 10px;
+    border-radius: 50px;
+    border: 1px solid rgba(255,45,45,0.2);
+  }
+
+  .rating-summary {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    background: linear-gradient(135deg, rgba(255,230,0,0.05), rgba(255,46,46,0.05));
+    border: 1.5px solid rgba(255,230,0,0.2);
+    border-radius: 18px;
+    padding: 24px 28px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .rating-big {
+    font-family: 'Bangers', cursive;
+    font-size: 3rem;
+    color: var(--yellow);
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(255,230,0,0.4);
+    flex-shrink: 0;
+  }
+
+  .rating-text { text-align: center; }
+
+  .rating-bars {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .rbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    color: #888;
+  }
+
+  .rbar span:first-child { width: 90px; flex-shrink: 0; }
+  .rbar span:last-child { width: 35px; flex-shrink: 0; color: white; }
+
+  .rb-fill {
+    flex: 1;
+    height: 8px;
+    background: linear-gradient(90deg, #ff6b00, #ff2d2d);
+    border-radius: 10px;
+  }
+
+  .rb-fill.green { background: linear-gradient(90deg, #00ff88, #00cfff); }
+  .rb-fill.red { background: linear-gradient(90deg, #ff0000, #ff6b00); }
+
+  @media (max-width: 600px) {
+    .testi-cards { grid-template-columns: 1fr; }
+    .rating-summary { flex-direction: column; text-align: center; }
+  }
+
+  .cta-section {
+    position: relative;
+    z-index: 10;
+    padding: 50px 20px;
+    max-width: 750px;
+    margin: 0 auto 20px;
+  }
+
+  .cta-inner {
+    background: linear-gradient(145deg, #0d1b35, #0a2240);
+    border: 2px solid rgba(0, 207, 255, 0.4);
+    border-radius: 24px;
+    padding: 40px 35px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 60px rgba(0,207,255,0.1), inset 0 0 40px rgba(0,0,0,0.3);
+  }
+
+  .cta-inner::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--green), var(--yellow), var(--red), var(--blue));
+    background-size: 200% 100%;
+    animation: borderFlow 3s linear infinite;
+  }
+
+  @keyframes borderFlow {
+    0% { background-position: 0% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .cta-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(0,207,255,0.15), rgba(0,255,136,0.15));
+    border: 1.5px solid rgba(0,207,255,0.5);
+    color: var(--blue);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+  }
+
+  .cta-title {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(2.2rem, 7vw, 3.5rem);
+    letter-spacing: 3px;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #ffffff, var(--blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .cta-desc {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    color: #b0c4de;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 28px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+
+  .cta-feat {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #e0e0e0;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    padding: 8px 16px;
+    border-radius: 50px;
+    transition: all 0.2s;
+  }
+
+  .cta-feat:hover {
+    background: rgba(0,207,255,0.15);
+    border-color: var(--blue);
+    color: var(--blue);
+    transform: translateY(-2px);
+  }
+
+  .cta-more {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    color: #888;
+    font-size: 1rem;
+    margin-bottom: 16px;
+    letter-spacing: 1px;
+  }
+
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    background: linear-gradient(135deg, #003d66, #005c99);
+    border: 2px solid var(--blue);
+    color: white;
+    text-decoration: none;
+    padding: 16px 28px;
+    border-radius: 16px;
+    font-family: 'Nunito', sans-serif;
+    transition: all 0.25s ease;
+    box-shadow: 0 8px 30px rgba(0,207,255,0.25);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.07), transparent);
+    transform: translateX(-100%);
+    animation: shine 2.5s infinite;
+  }
+
+  .cta-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0,207,255,0.4);
+    border-color: #00eeff;
+    background: linear-gradient(135deg, #004d80, #0070bb);
+  }
+
+  .cta-btn:active { transform: translateY(-1px); }
+
+  .cta-btn-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+
+  .cta-btn-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .cta-btn-label {
+    font-weight: 800;
+    font-size: 1.05rem;
+    color: white;
+    line-height: 1.2;
+  }
+
+  .cta-btn-url {
+    font-size: 0.85rem;
+    color: var(--blue);
+    font-weight: 700;
+    opacity: 0.9;
+  }
+
+  .cta-btn-arrow {
+    font-size: 1.5rem;
+    color: var(--blue);
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+
+  .cta-btn:hover .cta-btn-arrow {
+    transform: translateX(5px);
+  }
+
+  @media (max-width: 600px) {
+    .cta-inner { padding: 30px 20px; }
+    .cta-features { gap: 8px; }
+    .cta-btn { padding: 14px 20px; gap: 12px; }
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .meme-grid { grid-template-columns: 1fr; padding: 15px; gap: 20px; }
+    .card-img-wrap { height: 250px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Floating background emojis -->
+<div class="floaters" id="floaters"></div>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="site-title">ROCIM88</div>
+  <div class="subtitle">⚠️ WARNING: Main di sini = AUTO RUNGKAD 🤓 ⚠️</div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    🚨 ROCIM88 ALERT 🚨 &nbsp;&nbsp; Main di Rocim88 &nbsp;→&nbsp; RUNGKAD 100% &nbsp;&nbsp; 💀 Sudah terbukti secara ilmiah 💀 &nbsp;&nbsp; 🤓 Analisis mendalam: Cuan = 0, Rungkad = ∞ 🤓 &nbsp;&nbsp; 📉 Grafik keberuntungan? Lurus ke bawah! 📉 &nbsp;&nbsp; 🚨 ROCIM88 ALERT 🚨
+  </div>
+</div>
+
+<!-- MEME CARDS -->
+<div class="meme-grid">
+
+  <!-- Card 1: TNI guy -->
+  <div class="meme-card">
+    <div class="card-img-wrap">
+      <img src="1000258136.jpg" alt="Sersan Dua">
+      <div class="meme-top">ALHAMDULILLAH PAK, BUK...</div>
+      <div class="meme-bottom">HABIS MAIN ROCIM88<br>AUTO SERSAN RUNGKAD 😭</div>
+      <div class="impact-emoji" style="bottom:55px;right:10px;animation-delay:0.3s;">💸</div>
+    </div>
+    <div class="card-caption">
+      <h3>🎖️ SERSAN RUNGKAD</h3>
+      <p>Sudah tepati janji... deposit abis duluan sebelum tepati janjiku 😭<br>Pangkat naik, saldo turun ✅</p>
+    </div>
+  </div>
+
+  <!-- Card 2: Girl with jersey -->
+  <div class="meme-card">
+    <div class="card-img-wrap">
+      <img src="1000238151.jpg" alt="Real Madrid Fan">
+      <div class="meme-top">FANATIK REAL MADRID 🤍</div>
+      <div class="meme-bottom">PENYEPONG VINICIUS<br>SEJATI 🍑💀</div>
+      <div class="impact-emoji" style="top:10px;right:10px;">⚽</div>
+    </div>
+    <div class="card-caption">
+      <h3>🤍 PENYEPONG VINICIUS #1</h3>
+      <p>Baju Barca di badan, jersey Real di tangan...<br>"Vinicius baik-baik aja kok!" — dia, sambil nangis 😭🤡</p>
+    </div>
+  </div>
+
+  <!-- Card 3: Cool officer -->
+  <div class="meme-card">
+    <div class="card-img-wrap">
+      <img src="1000232370.jpg" alt="Contentional">
+      <div class="meme-top">CONTENTIONAL ✌️</div>
+      <div class="meme-bottom">ABIS RUNGKAD DI ROCIM88<br>MASIH GUE BANGET 😎</div>
+      <div class="impact-emoji" style="bottom:55px;left:10px;animation-delay:0.6s;">🕶️</div>
+    </div>
+    <div class="card-caption">
+      <h3>😎 CONTENTIONAL ABIS RUNGKAD</h3>
+      <p>Saldo kosong tapi gaya tetap 1000%.<br>"Tenang, ini cuma fase." 💀💀💀</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- RUNGKAD METER -->
+<div class="rungkad-section">
+  <div class="rungkad-box">
+    <div class="rungkad-title">📊 ROCIM88 RISK ANALYZER</div>
+
+    <div class="rungkad-meter">
+      <div class="meter-label">☠️ Tingkat Rungkad</div>
+      <div class="meter-bar">
+        <div class="meter-fill danger">99% RUNGKAD</div>
+      </div>
+    </div>
+
+    <div class="rungkad-meter">
+      <div class="meter-label">🍀 Peluang Cuan</div>
+      <div class="meter-bar">
+        <div class="meter-fill luck">1%</div>
+      </div>
+    </div>
+
+    <p style="color:#aaa;font-family:'Nunito',sans-serif;font-weight:700;margin-top:15px;font-size:0.9rem;">
+      *Data berdasarkan testimoni nyata para korban Rocim88 🤓
+    </p>
+  </div>
+</div>
+
+<!-- PERSUASIVE BUTTON SECTION -->
+<div class="persuade-section">
+
+  <!-- Social proof bar -->
+  <div class="social-proof">
+    <div class="proof-avatars">
+      <span>😭</span><span>💀</span><span>🤡</span><span>😤</span><span>😱</span>
+    </div>
+    <div class="proof-text">
+      <strong id="liveCount">1.247</strong> orang udah rungkad hari ini
+      <span class="proof-live">● LIVE</span>
+    </div>
+  </div>
+
+  <!-- Countdown urgency -->
+  <div class="urgency-bar">
+    ⚡ PROMO RUNGKAD BERAKHIR DALAM: &nbsp;<span id="countdown" style="color:var(--yellow);font-weight:900;">05:00</span>
+  </div>
+
+  <!-- Testimonials scrolling -->
+  <div class="testi-scroll">
+    <div class="testi-track">
+      <div class="testi-item">😭 <b>Budi_Malang:</b> "Deposít 500rb, 5 menit langsung habis WKWK"</div>
+      <div class="testi-item">💀 <b>Joko_Suroboyo:</b> "Istri nanya duit belanja kemana... contentional aja"</div>
+      <div class="testi-item">🤡 <b>Andi_Makasar:</b> "Kata temen bisa cuan, sekarang temennya kabur"</div>
+      <div class="testi-item">😤 <b>Rizky_Medan:</b> "HP udah mau dijual buat modal deposit lagi"</div>
+      <div class="testi-item">😱 <b>Hendra_Jkt:</b> "Rungkad 3x dalam 1 jam, gas lagi dong!"</div>
+      <div class="testi-item">😭 <b>Budi_Malang:</b> "Deposít 500rb, 5 menit langsung habis WKWK"</div>
+      <div class="testi-item">💀 <b>Joko_Suroboyo:</b> "Istri nanya duit belanja kemana... contentional aja"</div>
+      <div class="testi-item">🤡 <b>Andi_Makasar:</b> "Kata temen bisa cuan, sekarang temennya kabur"</div>
+    </div>
+  </div>
+
+  <!-- Main CTA button -->
+  <div class="btn-wrapper">
+    <div class="btn-hype">👇 BERANI COBA? KLIK INI KALAU MENTAL BAJA 👇</div>
+
+    <button class="play-btn-mega" onclick="showPopup()">
+      <span class="btn-glow"></span>
+      <span class="btn-content">
+        <span class="btn-icon">🎰</span>
+        <span class="btn-texts">
+          <span class="btn-main">COBA MAIN DI ROCIM88</span>
+          <span class="btn-sub">Kalau berani... klik sekarang!</span>
+        </span>
+        <span class="btn-arrow-right">⚡</span>
+      </span>
+    </button>
+
+    <div class="btn-warning">
+      ⚠️ <strong>Peringatan:</strong> 99% pemain rungkad dalam 10 menit pertama.
+      Apakah kamu bagian dari 1% yang beruntung? 🤔
+    </div>
+
+    <!-- FOMO badges -->
+    <div class="fomo-badges">
+      <div class="fomo-badge red">🔥 <span id="viewing">47</span> orang lagi liat halaman ini</div>
+      <div class="fomo-badge green">✅ Slot tersisa: <span id="slots">3</span></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- POPUP -->
+<div class="popup-overlay" id="popup">
+  <div class="popup-box">
+    <span class="popup-emoji">💀</span>
+    <div class="popup-title">RUNGKAD!!!</div>
+    <p class="popup-text">
+      Selamat! Anda resmi jadi korban Rocim88.<br>
+      Saldo: <b style="color:var(--red)">Rp 0</b><br>
+      Hutang: <b style="color:var(--yellow)">Tak terhingga</b> 😭<br><br>
+      <i>"Contentional..." — Survivor Rocim88, 2025</i>
+    </p>
+    <button class="popup-close" onclick="closePopup()">YAUDAH GAS LAGI 🤡</button>
+  </div>
+</div>
+
+<!-- TESTIMONI SECTION -->
+<div class="testi-section">
+  <div class="testi-header">
+    <div class="testi-badge">📢 TESTIMONI NYATA</div>
+    <h2 class="testi-title">HALL OF RUNGKAD 💀</h2>
+    <p class="testi-subtitle">Para korban yang sudah berjasa menguji keberuntungan di Rocim88</p>
+  </div>
+
+  <div class="testi-cards">
+
+    <div class="testi-card">
+      <div class="testi-card-top">
+        <div class="testi-avatar">😭</div>
+        <div class="testi-info">
+          <div class="testi-name">Budi Santoso</div>
+          <div class="testi-loc">📍 Malang, Jawa Timur</div>
+          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+        </div>
+        <div class="testi-badge-rungkad">RUNGKAD</div>
+      </div>
+      <div class="testi-quote">
+        "Awalnya coba-coba deposit 50rb. Eh enak, deposit 500rb. Sekarang lagi jual motor buat balik modal. Motor satu-satunya. Yang buat kerja. Alhamdulillah."
+      </div>
+      <div class="testi-footer-card">
+        <span class="testi-time">2 jam lalu</span>
+        <span class="testi-loss">💸 Kerugian: Rp 500.000</span>
+      </div>
+    </div>
+
+    <div class="testi-card featured">
+      <div class="testi-card-top">
+        <div class="testi-avatar">🤡</div>
+        <div class="testi-info">
+          <div class="testi-name">Joko Widiantoro</div>
+          <div class="testi-loc">📍 Surabaya, Jawa Timur</div>
+          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+        </div>
+        <div class="testi-badge-rungkad legend">LEGEND</div>
+      </div>
+      <div class="testi-quote">
+        "Istri nanya duit arisan kemana. Saya bilang dipinjemin temen. Temen nanya kok gak balik-balik. Saya bilang lagi nabung. Bank nanya cicilan kemana. Saya bilang... contentional."
+      </div>
+      <div class="testi-footer-card">
+        <span class="testi-time">5 jam lalu</span>
+        <span class="testi-loss">💸 Kerugian: Rp 2.300.000</span>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="testi-card-top">
+        <div class="testi-avatar">😤</div>
+        <div class="testi-info">
+          <div class="testi-name">Rizky Firmansyah</div>
+          <div class="testi-loc">📍 Medan, Sumatera Utara</div>
+          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+        </div>
+        <div class="testi-badge-rungkad">RUNGKAD</div>
+      </div>
+      <div class="testi-quote">
+        "Kata aplikasinya 'hampir menang'. Udah 47 kali hampir menang. Kayaknya artinya memang tidak akan pernah menang. Tapi gak papa, besok coba lagi."
+      </div>
+      <div class="testi-footer-card">
+        <span class="testi-time">1 hari lalu</span>
+        <span class="testi-loss">💸 Kerugian: Rp 850.000</span>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="testi-card-top">
+        <div class="testi-avatar">😱</div>
+        <div class="testi-info">
+          <div class="testi-name">Siti Rahayu</div>
+          <div class="testi-loc">📍 Bandung, Jawa Barat</div>
+          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+        </div>
+        <div class="testi-badge-rungkad">RUNGKAD</div>
+      </div>
+      <div class="testi-quote">
+        "Katanya 'game skill based'. Skill saya udah level dewa. Saldo saya level -1. Mungkin skillnya emang buat ngitung berapa cepat uang habis."
+      </div>
+      <div class="testi-footer-card">
+        <span class="testi-time">3 jam lalu</span>
+        <span class="testi-loss">💸 Kerugian: Rp 1.200.000</span>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="testi-card-top">
+        <div class="testi-avatar">💀</div>
+        <div class="testi-info">
+          <div class="testi-name">Hendra Gunawan</div>
+          <div class="testi-loc">📍 Jakarta Selatan</div>
+          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+        </div>
+        <div class="testi-badge-rungkad">RUNGKAD</div>
+      </div>
+      <div class="testi-quote">
+        "Rungkad jam 11 malem. Gas lagi jam 12. Rungkad lagi jam 12.05. Tidur jam 4 pagi. Bangun jam 6, langsung cek saldo. Masih 0. Alhamdulillah konsisten."
+      </div>
+      <div class="testi-footer-card">
+        <span class="testi-time">Kemarin</span>
+        <span class="testi-loss">💸 Kerugian: Rp 3.750.000</span>
+      </div>
+    </div>
+
+    <div class="testi-card featured">
+      <div class="testi-card-top">
+        <div class="testi-avatar">🏆</div>
+        <div class="testi-info">
+          <div class="testi-name">Andi Pratama</div>
+          <div class="testi-loc">📍 Makassar, Sulawesi</div>
+          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+        </div>
+        <div class="testi-badge-rungkad mvp">MVP RUNGKAD</div>
+      </div>
+      <div class="testi-quote">
+        "Teman saya bilang Rocim88 scam. Saya buktikan dia salah dengan deposit 5 juta. Sekarang saya yang minta maaf ke teman. Dan ke istri. Dan ke mertua. Dan ke diri sendiri."
+      </div>
+      <div class="testi-footer-card">
+        <span class="testi-time">3 hari lalu</span>
+        <span class="testi-loss">💸 Kerugian: Rp 5.000.000</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Rating summary -->
+  <div class="rating-summary">
+    <div class="rating-big">5.0 ⭐</div>
+    <div class="rating-text">
+      <div style="font-weight:800;color:white;font-size:1rem;">Rating Kepuasan Rungkad</div>
+      <div style="color:#888;font-size:0.85rem;">Berdasarkan 12.847 testimoni korban</div>
+    </div>
+    <div class="rating-bars">
+      <div class="rbar"><span>Rungkad Cepat</span><div class="rb-fill" style="width:99%"></div><span>99%</span></div>
+      <div class="rbar"><span>Cuan</span><div class="rb-fill green" style="width:1%"></div><span>1%</span></div>
+      <div class="rbar"><span>Nyesel</span><div class="rb-fill red" style="width:100%"></div><span>100%</span></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- TESTIMONI SECTION -->
+<div class="testi-section">
+  <div class="testi-header">
+    <div class="testi-header-badge">📢 TESTIMONI NYATA</div>
+    <h2 class="testi-big-title">HALL OF RUNGKAD 💀</h2>
+    <p class="testi-subtitle">Para korban yang sudah berjasa menguji keberuntungan di Rocim88</p>
+  </div>
+
+  <div class="testi-cards">
+
+    <div class="testi-card">
+      <div class="testi-card-top">
+        <div class="testi-avatar">😭</div>
+        <div class="testi-info">
+          <div class="testi-name">Budi Santoso</div>
+          <div class="testi-loc">📍 Malang, Jawa Timur</div>
+          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+        </div>
+        <div class="testi-badge-rungkad">RUNGKAD</div>
+      </div>
+      <div class="testi-quote">
+        "Awalnya coba-coba deposit 50rb. Eh enak, deposit 500rb. Sekarang lagi jual motor buat balik modal. Motor satu-satunya. Yang buat kerja. Alhamdulillah."
+      </div>
+      <div class="testi-footer-card">
+        <span class="testi-time">2 jam lalu</span>
+        <span class="testi-loss">💸 Kerugian: Rp 500.000</span>
+      </div>
+    </div>
+
+    <div class="testi-card featured">
+      <div class="testi-card-top">
+        <div class="testi-avatar">🤡</div>
+        <div class="testi-info">
+          <div class="testi-name">Joko Widiantoro</div>
+          <div class="testi-loc">📍 Surabaya, Jawa Timur</div>
+          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+        </div>
+        <div class="testi-badge-rungkad legend">LEGEND</div>
+      </div>
+      <div class="testi-quote">
+        "Istri nanya duit arisan kemana. Saya bilang dipinjemin temen. Temen nanya kok gak balik-balik. Saya bilang lagi nabung. Bank nanya cicilan kemana. Saya bilang... contentional."
+      </div>
+      <div class="testi-footer-card">
+        <span class="testi-time">5 jam lalu</span>
+        <span class="testi-loss">💸 Kerugian: Rp 2.300.000</span>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="testi-card-top">
+        <div class="testi-avatar">😤</div>
+        <div class="testi-info">
+          <div class="testi-name">Rizky Firmansyah</div>
+          <div class="testi-loc">📍 Medan, Sumatera Utara</div>
+          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+        </div>
+        <div class="testi-badge-rungkad">RUNGKAD</div>
+      </div>
+      <div class="testi-quote">
+        "Kata aplikasinya 'hampir menang'. Udah 47 kali hampir menang. Kayaknya artinya memang tidak akan pernah menang. Tapi gak papa, besok coba lagi."
+      </div>
+      <div class="testi-footer-card">
+        <span class="testi-time">1 hari lalu</span>
+        <span class="testi-loss">💸 Kerugian: Rp 850.000</span>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="testi-card-top">
+        <div class="testi-avatar">😱</div>
+        <div class="testi-info">
+          <div class="testi-name">Siti Rahayu</div>
+          <div class="testi-loc">📍 Bandung, Jawa Barat</div>
+          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+        </div>
+        <div class="testi-badge-rungkad">RUNGKAD</div>
+      </div>
+      <div class="testi-quote">
+        "Katanya 'game skill based'. Skill saya udah level dewa. Saldo saya level -1. Mungkin skillnya emang buat ngitung berapa cepat uang habis."
+      </div>
+      <div class="testi-footer-card">
+        <span class="testi-time">3 jam lalu</span>
+        <span class="testi-loss">💸 Kerugian: Rp 1.200.000</span>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="testi-card-top">
+        <div class="testi-avatar">💀</div>
+        <div class="testi-info">
+          <div class="testi-name">Hendra Gunawan</div>
+          <div class="testi-loc">📍 Jakarta Selatan</div>
+          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+        </div>
+        <div class="testi-badge-rungkad">RUNGKAD</div>
+      </div>
+      <div class="testi-quote">
+        "Rungkad jam 11 malem. Gas lagi jam 12. Rungkad lagi jam 12.05. Tidur jam 4 pagi. Bangun jam 6, langsung cek saldo. Masih 0. Alhamdulillah konsisten."
+      </div>
+      <div class="testi-footer-card">
+        <span class="testi-time">Kemarin</span>
+        <span class="testi-loss">💸 Kerugian: Rp 3.750.000</span>
+      </div>
+    </div>
+
+    <div class="testi-card featured">
+      <div class="testi-card-top">
+        <div class="testi-avatar">🏆</div>
+        <div class="testi-info">
+          <div class="testi-name">Andi Pratama</div>
+          <div class="testi-loc">📍 Makassar, Sulawesi</div>
+          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+        </div>
+        <div class="testi-badge-rungkad mvp">MVP RUNGKAD</div>
+      </div>
+      <div class="testi-quote">
+        "Teman saya bilang Rocim88 scam. Saya buktikan dia salah dengan deposit 5 juta. Sekarang saya yang minta maaf ke teman. Dan ke istri. Dan ke mertua. Dan ke diri sendiri."
+      </div>
+      <div class="testi-footer-card">
+        <span class="testi-time">3 hari lalu</span>
+        <span class="testi-loss">💸 Kerugian: Rp 5.000.000</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="rating-summary">
+    <div class="rating-big">5.0 ⭐</div>
+    <div class="rating-text">
+      <div style="font-weight:800;color:white;font-size:1rem;">Rating Kepuasan Rungkad</div>
+      <div style="color:#888;font-size:0.85rem;font-family:'Nunito',sans-serif;">Berdasarkan 12.847 testimoni korban</div>
+    </div>
+    <div class="rating-bars">
+      <div class="rbar"><span>Rungkad Cepat</span><div class="rb-fill" style="width:99%"></div><span>99%</span></div>
+      <div class="rbar"><span>Cuan</span><div class="rb-fill green" style="width:1%"></div><span>1%</span></div>
+      <div class="rbar"><span>Nyesel</span><div class="rb-fill red" style="width:100%"></div><span>100%</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA SECTION -->
+<div class="cta-section">
+  <div class="cta-inner">
+    <div class="cta-badge">✨ JASA PEMBUATAN WEBSITE</div>
+    <h2 class="cta-title">Mau Buat Website<br>Seperti Ini?</h2>
+    <p class="cta-desc">
+      Website meme, landing page, toko online, PPOB, atau apapun yang kamu mau —<br>
+      kami siap wujudkan dengan desain keren & profesional! 🚀
+    </p>
+    <div class="cta-features">
+      <div class="cta-feat">⚡ Fast & Responsive</div>
+      <div class="cta-feat">🎨 Desain Custom</div>
+      <div class="cta-feat">💰 Harga Terjangkau</div>
+      <div class="cta-feat">🛠️ Support After Launch</div>
+    </div>
+    <p class="cta-more">For more information 👇</p>
+    <a href="https://desain.fantasyy.store/" target="_blank" rel="noopener" class="cta-btn">
+      <span class="cta-btn-icon">🌐</span>
+      <span class="cta-btn-text">
+        <span class="cta-btn-label">Kunjungi Website Kami</span>
+        <span class="cta-btn-url">desain.fantasyy.store</span>
+      </span>
+      <span class="cta-btn-arrow">→</span>
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>Made with 💀 for <span>ROCIM88</span> victims everywhere</p>
+  <p style="margin-top:5px;">Main di Rocim88 = <span>AUTO RUNGKAD</span> 🤓 | 2025</p>
+  <p style="margin-top:8px;font-size:0.8rem;">Powered by <a href="https://desain.fantasyy.store/" target="_blank" style="color:var(--blue);text-decoration:none;">desain.fantasyy.store</a></p>
+</footer>
+
+<script>
+  // Floating emojis
+  const emojis = ['💸','🤓','💀','📉','😭','🎰','🤡','💔','🚨','😤'];
+  const container = document.getElementById('floaters');
+  for (let i = 0; i < 20; i++) {
+    const el = document.createElement('div');
+    el.className = 'floater';
+    el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.animationDuration = (8 + Math.random() * 10) + 's';
+    el.style.animationDelay = (Math.random() * 8) + 's';
+    el.style.fontSize = (1.5 + Math.random() * 2) + 'rem';
+    container.appendChild(el);
+  }
+
+  // Popup
+  function showPopup() {
+    document.getElementById('popup').classList.add('show');
+  }
+  function closePopup() {
+    document.getElementById('popup').classList.remove('show');
+  }
+  document.getElementById('popup').addEventListener('click', function(e) {
+    if (e.target === this) closePopup();
+  });
+
+  // Countdown timer (5 menit, loop)
+  let timeLeft = 5 * 60;
+  const countdownEl = document.getElementById('countdown');
+  setInterval(() => {
+    timeLeft--;
+    if (timeLeft <= 0) timeLeft = 5 * 60;
+    const m = String(Math.floor(timeLeft / 60)).padStart(2, '0');
+    const s = String(timeLeft % 60).padStart(2, '0');
+    countdownEl.textContent = m + ':' + s;
+  }, 1000);
+
+  // Live rungkad counter — naik pelan-pelan secara random
+  let count = 1247;
+  const liveCountEl = document.getElementById('liveCount');
+  setInterval(() => {
+    count += Math.floor(Math.random() * 3);
+    liveCountEl.textContent = count.toLocaleString('id-ID');
+  }, 2800);
+
+  // Viewers online (fluctuate)
+  let viewers = 47;
+  const viewingEl = document.getElementById('viewing');
+  setInterval(() => {
+    viewers += Math.random() > 0.5 ? 1 : -1;
+    viewers = Math.max(30, Math.min(80, viewers));
+    viewingEl.textContent = viewers;
+  }, 3500);
+
+  // Slots countdown
+  let slots = 3;
+  const slotsEl = document.getElementById('slots');
+  setInterval(() => {
+    if (slots > 1 && Math.random() > 0.7) {
+      slots--;
+      slotsEl.textContent = slots;
+      slotsEl.style.color = slots === 1 ? 'var(--red)' : 'inherit';
+    }
+  }, 12000);
+</script>
+</body>
+</html>
